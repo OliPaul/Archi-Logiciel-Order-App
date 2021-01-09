@@ -30,4 +30,12 @@ public class Responses implements IResponse {
 
         return new ResponseProcessing(responses).getLast();
     }
+
+    @Override
+    public List<List<Response>> deleteResponses() {
+        //Get responses list
+        List<List<Response>> responses = IResponseDAO.getResponse();
+
+        return IResponseDAO.deleteResponse(new ResponseProcessing(responses).deleteResponse());
+    }
 }

@@ -31,4 +31,11 @@ public class CustomerServiceController {
 
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
+
+    @GetMapping("/customerservice/responses/delete")
+    public ResponseEntity<List<List<Response>>> deleteResponses() {
+        final List<List<Response>> responseList = iResponse.deleteResponses();
+
+        return new ResponseEntity<>(responseList, HttpStatus.OK);
+    }
 }
