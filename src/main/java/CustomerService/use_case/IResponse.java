@@ -1,11 +1,12 @@
 package CustomerService.use_case;
 
-import CustomerService.domain.Response;
+import Customer.domain.Response;
 
 import java.util.List;
 
 public interface IResponse {
 
-    List<Response> getAllResponses();
-    List<Response> getLastResponses();
+    List<List<Response>> getAllResponses();
+    List<List<Response>> getLastResponses();
+    List<List<Response>> deleteResponses();
 }
