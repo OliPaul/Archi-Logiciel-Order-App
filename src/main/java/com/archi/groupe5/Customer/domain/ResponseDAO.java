@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface IResponseDAO {
+public interface ResponseDAO {
 
     //Store responses in file
     String storeResponse(List<Response> responseList);

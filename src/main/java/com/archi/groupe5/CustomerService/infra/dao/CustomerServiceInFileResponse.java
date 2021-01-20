@@ -1,14 +1,14 @@
 package com.archi.groupe5.CustomerService.infra.dao;
 
 import com.archi.groupe5.Customer.domain.Response;
-import com.archi.groupe5.CustomerService.domain.IResponseDAO;
+import com.archi.groupe5.CustomerService.domain.ResponseDAO;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.List;
 
 @Service
-public class CSInFileResponse implements IResponseDAO {
+public class CustomerServiceInFileResponse implements ResponseDAO {
 
     public List<List<Response>> deleteResponse(List<List<Response>> responseList) {
         //Write responses list in file

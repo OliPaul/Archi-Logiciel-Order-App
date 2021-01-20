@@ -1,7 +1,7 @@
 package com.archi.groupe5.Customer.infra.dao;
 
 import com.archi.groupe5.Customer.domain.Response;
-import com.archi.groupe5.Customer.domain.IResponseDAO;
+import com.archi.groupe5.Customer.domain.ResponseDAO;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CInFileResponse implements IResponseDAO {
+public class CustomerInFileResponse implements ResponseDAO {
 
     public String storeResponse(List<Response> responses) {
 

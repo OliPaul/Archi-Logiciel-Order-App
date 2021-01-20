@@ -1,7 +1,8 @@
 package com.archi.groupe5.Customer.infra.controller;
 
 import com.archi.groupe5.Customer.domain.Response;
-import com.archi.groupe5.Customer.use_case.CResponsesUseCase;
+import com.archi.groupe5.Customer.use_case.GetCustomerResponse;
+import com.archi.groupe5.Customer.use_case.StoreCustomerResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,10 +16,12 @@ import java.util.concurrent.atomic.AtomicReference;
 @RestController
 public class CustomerController {
 
-    private final CResponsesUseCase CResponsesUseCase;
+    private final GetCustomerResponse getCustomerResponse;
+    private final StoreCustomerResponse storeCustomerResponse;
 
-    public CustomerController(CResponsesUseCase CResponsesUseCase) {
-        this.CResponsesUseCase = CResponsesUseCase;
+    public CustomerController(GetCustomerResponse getCustomerResponse, StoreCustomerResponse storeCustomerResponse) {
+        this.getCustomerResponse = getCustomerResponse;
+        this.storeCustomerResponse = storeCustomerResponse;
     }
 
     @PostMapping("/customer/responses/{id}")
@@ -41,13 +44,13 @@ public class CustomerController {
         });
 
         //Mantenant on stocke ces reponses dans notre fichier de réponses et on retourne un message à l'utilisateur
-        responseText = hasNoResponseToOrder.get() ? "Vous n'avez pas répondu à au moins une réponse." : CResponsesUseCase.storeCustomerResponse(responseList);
+        responseText = hasNoResponseToOrder.get() ? "Vous n'avez pas répondu à au moins une réponse." : storeCustomerResponse.execute(responseList);
         return new ResponseEntity<>(responseText, HttpStatus.OK);
     }
 
     @GetMapping("/customer/responses/{id}")
     public ResponseEntity<List<Response>> displayResponses(@PathVariable(required = true, name = "id") String userID){
-        List<Response> responseList = CResponsesUseCase.getCustomerResponse(userID);
+        List<Response> responseList = getCustomerResponse.execute(userID);
 
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }

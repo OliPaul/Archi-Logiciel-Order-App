@@ -22,39 +22,11 @@ public class Response {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
     public void setAnswer(String answer) {
         this.answer = answer;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
     }
 }

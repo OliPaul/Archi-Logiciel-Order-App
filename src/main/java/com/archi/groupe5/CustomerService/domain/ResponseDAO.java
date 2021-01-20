@@ -4,7 +4,7 @@ import com.archi.groupe5.Customer.domain.Response;
 
 import java.util.List;
 
-public interface IResponseDAO {
+public interface ResponseDAO {
 
     //Delete responses in file
     List<List<Response>> deleteResponse(List<List<Response>> responseList);
