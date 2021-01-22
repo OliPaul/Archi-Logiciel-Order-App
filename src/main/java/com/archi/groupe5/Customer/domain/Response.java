@@ -26,7 +26,9 @@ public class Response {
         return userId;
     }
 
+    // préférer un nom de méthode plus explicite : resetAnswer() sans paramètre
     public void setAnswer(String answer) {
+        // this.answer = "undefined"
         this.answer = answer;
     }
 }

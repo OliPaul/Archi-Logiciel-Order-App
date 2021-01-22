@@ -34,6 +34,10 @@ public class CustomerController {
         //Parcourir la data reçue dans le body et l'affecter à notre liste de réponses
         customerResponsesList.forEach((map) -> {
 
+            // ce contrôle doit ce faire dans la class Responses, c'est un invariant domain
+            // vous devez envoyer tous les réponses dans le domain qui va valider la cohérence des données
+            // si jamais c'est pas un controller http qui fait appel au use case
+            // il va falloir recoder cette vérification
             //Si on a une réponse qui n'est pas définie, on interrompt la boucle
             if(map.get("answer").equals("undefined")){
                 hasNoResponseToOrder.set(true);
