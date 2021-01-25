@@ -26,25 +26,9 @@ public class CustomerController {
 
     @PostMapping("/customer/responses/{id}")
     public ResponseEntity<String> storeResponses(@RequestBody List<HashMap<String, String>> customerResponsesList, @PathVariable(required = true, name = "id") String userID){
-        List<Response> responseList = new ArrayList<>();
-        Date dateResponse = new Date();
-        AtomicReference<Boolean> hasNoResponseToOrder = new AtomicReference<>(false);
         String responseText = "";
 
-        //Parcourir la data reçue dans le body et l'affecter à notre liste de réponses
-        customerResponsesList.forEach((map) -> {
-
-            //Si on a une réponse qui n'est pas définie, on interrompt la boucle
-            if(map.get("answer").equals("undefined")){
-                hasNoResponseToOrder.set(true);
-                return;
-            }
-
-            responseList.add(new Response(map.get("id").toString(), map.get("price").toString(), userID, map.get("answer"), dateResponse));
-        });
-
-        //Mantenant on stocke ces reponses dans notre fichier de réponses et on retourne un message à l'utilisateur
-        responseText = hasNoResponseToOrder.get() ? "Vous n'avez pas répondu à au moins une réponse." : storeCustomerResponse.execute(responseList);
+        responseText = storeCustomerResponse.execute(customerResponsesList);
         return new ResponseEntity<>(responseText, HttpStatus.OK);
     }
 

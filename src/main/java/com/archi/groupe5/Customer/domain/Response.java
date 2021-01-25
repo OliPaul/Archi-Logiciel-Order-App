@@ -26,7 +26,7 @@ public class Response {
         return userId;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void resetAnswer() {
+        this.answer = "undefined";
     }
 }

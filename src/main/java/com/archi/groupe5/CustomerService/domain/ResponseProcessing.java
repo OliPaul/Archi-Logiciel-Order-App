@@ -39,7 +39,7 @@ public class ResponseProcessing {
     public List<List<Response>> deleteResponse(){
         responseList.forEach((responses -> {
             responses.forEach((order -> {
-                order.setAnswer("undefined");
+                order.resetAnswer();
             }));
         }));
 
