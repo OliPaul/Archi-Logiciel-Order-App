@@ -2,6 +2,7 @@ package com.archi.groupe5.Customer.use_case;
 
 import com.archi.groupe5.Customer.domain.Response;
 import com.archi.groupe5.Customer.domain.ResponseDAO;
+import com.archi.groupe5.Customer.domain.Responses;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,30 +19,9 @@ public class StoreCustomerResponse {
     }
 
     public String execute(List<HashMap<String, String>> customerResponsesList){
-        List<Response> responseList = new ArrayList<>();
-        AtomicReference<Boolean> hasNoResponseToOrder = new AtomicReference<>(false);
-        Date dateResponse = new Date();
-        String mailToCustomer = "";
 
+        Responses responses = new Responses();
 
-        //Parcourir la data reçue et l'affecter à notre liste de réponses
-        customerResponsesList.forEach((map) -> {
-
-            //Si on a une réponse qui n'est pas définie, on interrompt la boucle
-            if(map.get("answer").equals("undefined")){
-                hasNoResponseToOrder.set(true);
-                return;
-            }
-
-            responseList.add(new Response(map.get("id").toString(), map.get("price").toString(), map.get("userId").toString(), map.get("answer").toString(), dateResponse));
-        });
-
-        if(hasNoResponseToOrder.get().equals(true)){
-            mailToCustomer = "Vous n'avez pas répondu à au moins une commande.";
-        }else{
-            mailToCustomer = responseDAO.storeResponse(responseList);
-        }
-
-        return mailToCustomer;
+        return responseDAO.storeResponse(responses.processing(customerResponsesList));
     }
 }

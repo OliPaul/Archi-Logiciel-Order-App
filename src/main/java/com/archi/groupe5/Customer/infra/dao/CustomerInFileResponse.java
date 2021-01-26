@@ -13,7 +13,9 @@ public class CustomerInFileResponse implements ResponseDAO {
 
     public String storeResponse(List<Response> responses) {
 
-        System.out.println(responses.get(0).getId());
+        if(responses.equals(null)){
+            return "Vous n\'avez pas répondu à au moins une commande.";
+        }
 
         //Récupérer les réponses dans notre fichier de réponses.
         List<List<Response>> responsesList = this.getResponse() == null ? new ArrayList<>() : this.getResponse();
