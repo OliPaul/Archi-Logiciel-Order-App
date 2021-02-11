@@ -13,7 +13,7 @@ public class CustomerServiceInFileResponse implements ResponseDAO {
     public List<List<Response>> deleteResponse(List<List<Response>> responseList) {
         //Write responses list in file
         try {
-            File responsesFile = new File("responses");
+            File responsesFile = new File("responses.txt");
             FileOutputStream fos = new FileOutputStream(responsesFile);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
@@ -34,7 +34,7 @@ public class CustomerServiceInFileResponse implements ResponseDAO {
         //Read responses list in file
         List<List<Response>> responses = null;
         try {
-            File responsesFile = new File("responses");
+            File responsesFile = new File("responses.txt");
             FileInputStream fis = new FileInputStream(responsesFile);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
