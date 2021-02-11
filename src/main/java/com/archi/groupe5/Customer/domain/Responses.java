@@ -1,6 +1,8 @@
 package com.archi.groupe5.Customer.domain;
 
 import com.archi.groupe5.Customer.domain.Response;
+import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,7 +21,7 @@ public class Responses {
     }
 
     public List<Response> checkIfCustomerHasResponse(String userID){
-        if(responseList.equals(null)){
+        if(responseList == null){
             return customerHasNotResponse(userID);
         }
 
@@ -27,11 +29,14 @@ public class Responses {
     }
 
     public List<Response> custommerHasResponse(String userID) {
-        List<List<Response>> tempResponsesList = null;
+        List<List<Response>> tempResponsesList = new ArrayList<>();
 
         responseList.forEach((responses -> {
-            responses.forEach((order -> {
-                if (order.getUserId().equals(userID)) {
+
+            ArrayList list = (ArrayList) responses;
+            list.forEach((order -> {
+                Response aResponse = new Gson().fromJson(new Gson().toJson(order), Response.class);
+                if (aResponse.getUserId().equals(userID)) {
                     tempResponsesList.add(responses);
                 }
                 return;
