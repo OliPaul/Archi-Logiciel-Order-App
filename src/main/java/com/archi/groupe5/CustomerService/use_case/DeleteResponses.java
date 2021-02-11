@@ -3,9 +3,11 @@ package com.archi.groupe5.CustomerService.use_case;
 import com.archi.groupe5.Customer.domain.Response;
 import com.archi.groupe5.CustomerService.domain.ResponseDAO;
 import com.archi.groupe5.CustomerService.domain.ResponseProcessing;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class DeleteResponses {
     private final ResponseDAO ResponseDAO;
 

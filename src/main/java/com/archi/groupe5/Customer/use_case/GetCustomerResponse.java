@@ -3,9 +3,12 @@ package com.archi.groupe5.Customer.use_case;
 import com.archi.groupe5.Customer.domain.Responses;
 import com.archi.groupe5.Customer.domain.Response;
 import com.archi.groupe5.Customer.domain.ResponseDAO;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class GetCustomerResponse {
 
     private final ResponseDAO responseDAO;
